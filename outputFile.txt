@@ -1,0 +1,15 @@
+0 : const fs = require('fs')
+1 : const process = require('process')
+2 : 
+3 : const argument = process.argv[2]
+4 : 
+5 : fs.readFile(argument, (nonExistent, fileContent) => {
+6 :   if (nonExistent) {
+7 :     console.log('None Existent DIR')
+8 :   } else {
+9 :     const stringContent = fileContent.toString().split('\n')
+10 :     for (let i = 0; i < stringContent.length; i += 1) {
+11 :       console.log(`${i + 1} : ${stringContent[i]}`)
+12 :     }
+13 :   }
+14 : })
