@@ -3,7 +3,14 @@ const fs = require('fs')
 const argument = process.argv.slice(2)
 const [contentFile, outputFile, flag] = [...argument]
 
-if (argument.length < 2) {
+if (argument.length === 0) {
+  process.stdin.on('data', (listData) => {
+    const dataArr = listData.toString().split('\n')
+    for (let i = 0; i < dataArr.length; i += 1) {
+      process.stdout.write(`${i + 1} : ${dataArr[i]}\n`)
+    }
+  })
+} else if (argument.length === 1) {
   console.log('Missing 2nd Argument (Required)')
   process.exit(1)
 } else {
